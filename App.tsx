@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Provider, observer } from 'mobx-react';
-// import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import AuthStore from './store/auth';
 
@@ -13,14 +13,11 @@ const auth = new AuthStore();
 export default class Index extends Component<Props> {
 	render() {
 		return (
-			<Provider auth={auth}>
-				<Text>hi</Text>
-				<Text>hi</Text>
-				<Text>hi</Text>
-				<Text>hi</Text>
-				<Text>hi</Text>
-				<Text>hi</Text>
-			</Provider>
+			<NavigationContainer>
+				<Provider auth={auth}>
+					<Text>done</Text>
+				</Provider>
+			</NavigationContainer>
 		);
 	}
 }
