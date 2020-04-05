@@ -4,14 +4,20 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
-		"ios": "react-native run-ios",
 		"d": "react-native start",
-		"test": "jest",
-		"lint": "eslint ."
+		"build": "cd android && ./gradlew assembleRelease && cd ../ios && pod install",
+		"ios": "react-native run-ios",
+		"lint": "eslint .",
+		"test": "jest"
+	},
+	"jest": {
+		"preset": "react-native"
 	},
 	"dependencies": {
 		"@react-native-community/masked-view": "^0.1.7",
 		"@react-navigation/native": "^5.1.4",
+		"@react-navigation/stack": "^5.2.9",
+		"add": "^2.0.6",
 		"mobx": "^5.15.4",
 		"mobx-react": "^6.1.8",
 		"react": "16.13.1",
@@ -19,7 +25,8 @@
 		"react-native-gesture-handler": "^1.6.1",
 		"react-native-reanimated": "^1.7.1",
 		"react-native-safe-area-context": "^0.7.3",
-		"react-native-screens": "^2.4.0"
+		"react-native-screens": "^2.4.0",
+		"yarn": "^1.22.4"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
@@ -27,6 +34,8 @@
 		"@babel/plugin-proposal-decorators": "^7.8.3",
 		"@babel/runtime": "^7.9.2",
 		"@react-native-community/eslint-config": "^1.0.0",
+		"@types/react": "^16.9.32",
+		"@types/react-native": "^0.62.1",
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
 		"babel-jest": "^25.2.6",
@@ -42,8 +51,5 @@
 		"metro-react-native-babel-preset": "^0.59.0",
 		"prettier": "^2.0.2",
 		"react-test-renderer": "16.13.1"
-	},
-	"jest": {
-		"preset": "react-native"
 	}
 }
