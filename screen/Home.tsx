@@ -10,10 +10,12 @@ interface Props {
 @observer
 export default class Index extends Component<Props> {
 	render() {
+		// console.warn(this.props);
 		return (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 				<Text>Home Screen1</Text>
-				<Button title="Go to Details" onPress={() => this.props.navigation.navigate('Details', {itemId: 86})} />
+				<Button title="Go to Details" onPress={() => this.props.navigation.navigate('Details', { itemId: 86 })} />
+				<Button title="Go to Details" onPress={() => this.props.navigation.push('Home')} />
 			</View>
 		);
 	}

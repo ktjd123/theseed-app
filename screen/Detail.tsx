@@ -20,7 +20,6 @@ interface Props {
 export default class Index extends Component<Props> {
 	render() {
 		const { route } = this.props;
-		route.params.itemId;
 		return (
 			<View>
 				<Text>Details Screen itemId is {route.params.itemId} </Text>

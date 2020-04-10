@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
+import { Button, Alert } from 'react-native';
 import { Provider, observer } from 'mobx-react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import { Home, Detail } from './screen';
 
 import AuthStore from './store/auth';
