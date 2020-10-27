@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 import { StatusBar, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { observer } from 'mobx-react';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { observer, Provider } from 'mobx-react';
+import { observable } from 'mobx';
 
-import { Auth, Navigation } from './pages';
+import { Auth } from './pages';
+
+import { NavigationStore } from './store';
+
+const navigation = new NavigationStore();
 
 const Stack = createStackNavigator();
 
 @observer
 export default class Index extends Component {
+  @observable navigationRef = React.createRef<NavigationContainerRef>();
+
+  componentDidMount() {
+    navigation.navigation = this.navigationRef.current;
+  }
+
   render() {
     return (
-      <>
+      <Provider navigation={navigation}>
         <StatusBar />
-        <NavigationContainer>
+        <NavigationContainer ref={this.navigationRef}>
           <Stack.Navigator>
             <Stack.Screen
               name="Auth"
@@ -24,7 +37,7 @@ export default class Index extends Component {
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </>
+      </Provider>
     );
   }
 }
